@@ -30,10 +30,6 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class UserRoles(models.TextChoices):
-    MEMBER = 'member', _('member')
-    MODERATOR = 'moderator', _('moderator')
-
 
 class User(AbstractUser):
     username = None
