@@ -1,7 +1,6 @@
 from django.urls import path
 from main.apps import MainConfig
-from main.views import HabitListView, HabitDeleteView, HabitDetailView, HabitUpdateView, HabitCreateView, \
-    TimeAndPlaceCreateView, TimeAndPlaceListView
+from main.views import HabitListView, HabitDeleteView, HabitDetailView, HabitUpdateView, HabitCreateView
 
 app_name = MainConfig.name
 
@@ -11,6 +10,4 @@ urlpatterns = [
     path('habit/detail/<int:pk>/', HabitDetailView.as_view(), name='habit-detail'),
     path('habit/delete/<int:pk>/', HabitDeleteView.as_view(), name='habit-delete'),
     path('habit/update/<int:pk>/', HabitUpdateView.as_view(), name='habit-update'),
-    path('time_place/', TimeAndPlaceListView.as_view(), name='time_place-list'),
-    path('time_place/create/', TimeAndPlaceCreateView.as_view(), name='time-place-create'),
 ]
