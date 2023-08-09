@@ -32,11 +32,11 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    username = models.CharField(unique=True, verbose_name='Имя в телеграмме')
-    email = models.EmailField(unique=True, verbose_name='Почта')
-    phone = models.CharField(max_length=35, verbose_name='Телефон', **NULLABLE)
-    avatar = models.ImageField(upload_to='users/', verbose_name='Аватар', **NULLABLE)
+    username = models.CharField(unique=True, verbose_name='Телеграм')
+    first_name = models.CharField(verbose_name='Имя', **NULLABLE)
+    last_name = models.CharField(verbose_name='Фамилия', **NULLABLE)
+    chat_id = models.IntegerField(verbose_name='id чата', unique=True, null=True)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     objects = CustomUserManager()
     REQUIRED_FIELDS = []
