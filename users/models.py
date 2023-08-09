@@ -1,12 +1,9 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
 
-
-# Create your models here.
 class CustomUserManager(BaseUserManager):
     def _create_user(self, username, password=None, **extra_fields):
         if not username:
@@ -20,15 +17,14 @@ class CustomUserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
-        extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault('is_active', True)  # Set is_active to True
         return self._create_user(username, password, **extra_fields)
 
     def create_superuser(self, username, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault('is_active', True)  # Set is_active to True
         return self._create_user(username, password, **extra_fields)
-
 
 class User(AbstractUser):
     username = models.CharField(unique=True, verbose_name='Телеграм')

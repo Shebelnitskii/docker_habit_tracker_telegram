@@ -5,7 +5,7 @@ from main.permissions import IsPublicOrReadOnly, IsOwnerOrReadOnly
 from main.models import Habit
 from main.serializers import HabitSerializer
 from main.pagination import HabitPagination
-
+from main.tasks import send_habit_message
 # Create your views here.
 
 class HabitListView(generics.ListAPIView):
@@ -32,7 +32,6 @@ class HabitCreateView(generics.CreateAPIView):
         new_habit = serializer.save()
         new_habit.owner = self.request.user
         new_habit.save()
-
 
 class HabitUpdateView(generics.UpdateAPIView):
     queryset = Habit.objects.all()
