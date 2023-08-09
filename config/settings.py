@@ -145,5 +145,26 @@ SIMPLE_JWT = {
 
 # Настройки работы с Telegram
 TELEGRAM_API_TOKEN = os.getenv('TELEGRAM_API_TOKEN')
-CHAT_ID = os.getenv('CHAT_ID')
 
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+
+CELERY_TIMEZONE = "Asia/Tbilisi"
+
+
+CELERY_TASK_TRACK_STARTED = True
+
+
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# Настройки для Celery
+CELERY_BEAT_SCHEDULE = {
+    'send_telegram_message': {
+        'task': 'main.tasks.send_telegram_message',
+        'schedule': timedelta(seconds=5),
+    },
+}

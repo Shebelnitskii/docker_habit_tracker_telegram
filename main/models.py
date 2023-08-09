@@ -26,3 +26,10 @@ class Habit(models.Model):
     class Meta:
         verbose_name = 'Привычка'
         verbose_name_plural = 'Привычки'
+
+class ChatState(models.Model):
+    message_id = models.IntegerField(unique=True)
+    message_sent = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Chat ID: {self.chat_id}, Message Sent: {self.message_sent}"
