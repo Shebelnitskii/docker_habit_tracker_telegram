@@ -21,6 +21,7 @@ class Habit(models.Model):
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
                               verbose_name='Пользователь')
+
     def __str__(self):
         return self.action
 

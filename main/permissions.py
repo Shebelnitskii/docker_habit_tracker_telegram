@@ -7,7 +7,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return obj.user == request.user
+        return obj.owner == request.user
 
 
 class IsPublicOrReadOnly(permissions.BasePermission):
@@ -16,7 +16,7 @@ class IsPublicOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if obj.public == True:
             return True
-        elif obj.public == False and obj.user != request.user:
+        elif obj.public == False and obj.owner != request.user:
             return False
         else:
             return False
