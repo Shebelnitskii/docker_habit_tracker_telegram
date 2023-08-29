@@ -83,10 +83,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
+        'NAME': 'docker_db',      # Имя базы данных из POSTGRES_DB в docker-compose.yml
+        'USER': 'postgres',    # Имя пользователя из POSTGRES_USER в docker-compose.yml
+        'PASSWORD': 'postgres',  # Пароль из POSTGRES_PASSWORD в docker-compose.yml
+        'HOST': 'postgres_host',  # Имя сервиса базы данных из docker-compose.yml
+        'PORT': '5432',
     }
 }
 
@@ -151,9 +152,9 @@ CORS_ALLOWED_ORIGINS = [
 # Настройки работы с Telegram
 TELEGRAM_API_TOKEN = os.getenv("TELEGRAM_API_TOKEN")
 
-CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_BROKER_URL = "redis://redis:6379/0"
 
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 CELERY_TIMEZONE = "Asia/Tbilisi"
 

@@ -1,8 +1,13 @@
 Проект "Shebelnitskiy Habit Tracker" представляет собой веб-приложение для отслеживания привычек через Telegram бота.
 
-Установка
+## Требования
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+## Установка
 Клонируйте репозиторий на свой компьютер:
-- git clone https://github.com/Shebelnitskii/course_work_drf.git
+- git clone https://github.com/Shebelnitskii/Habit_tracker_telegram
 
 Перейдите в директорию проекта:
 - cd course_work_drf
@@ -15,16 +20,15 @@
 - pip install -r requirements.txt
 
 Настройка:
-- Создайте файл .env в корневой директории проекта и скопируйте в него содержимое из .env.sample. Заполните необходимые параметры, такие как TELEGRAM_API_TOKEN, DB_NAME, DB_USER, DB_PASSWORD настройки подключения к базе данных и другие.
+- Создайте файл .env в корневой директории проекта и скопируйте в него содержимое из .env.sample. Заполните необходимые параметры, такие как TELEGRAM_API_TOKEN
 
-Запуск:
-1) Запустите сервер Django:
-    - python manage.py runserver
-2) Запустите Celery worker для обработки задач:
-    - celery -A config worker -l info
-3) Запустите Celery beat для планирования задач:
-    - celery -A config beat -l info
-4) Откройте браузер и перейдите по адресу http://localhost:8000/ для проверки работоспособности сервера.
+## Запуск проекта
+1. #### Сделайте миграцию внутри контейнера через команду:
+   - docker-compose exec <имя контейнера если оно было изменено вами> python manage.py migrate      
+2. #### Соберите Docker образы и запустите контейнеры:
+    - docker-compose build
+    - docker-compose up
+##### Эти команды создадут и запустят контейнеры для Django приложения и PostgreSQL базы данных.
 
 Работа с Telegram ботом
 1) Зайдите в Telegram и найдите бота @shebelnitskiy_habit_bot.

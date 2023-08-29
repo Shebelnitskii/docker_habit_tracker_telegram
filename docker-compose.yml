@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: docker/django/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_host
+      - redis
+  postgres_host:
+    image: postgres
+    environment:
+      POSTGRES_DB: docker_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+  celery:
+    build:
+      context: .
+      dockerfile: docker/celery/Dockerfile
+    depends_on:
+      - django
+      - redis
