@@ -7,10 +7,10 @@
 
 ## Установка
 Клонируйте репозиторий на свой компьютер:
-- git clone https://github.com/Shebelnitskii/Habit_tracker_telegram
+- git clone https://github.com/Shebelnitskii/django_habit_tracker_telegram
 
 Перейдите в директорию проекта:
-- cd course_work_drf
+- cd django_habit_tracker_telegram
 
 Создайте и активируйте виртуальное окружение:
 - python -m venv venv
@@ -31,7 +31,7 @@
 ##### Эти команды создадут и запустят контейнеры для Django приложения и PostgreSQL базы данных.
 
 Работа с Telegram ботом
-1) Зайдите в Telegram и найдите бота @shebelnitskiy_habit_bot.
+1) Зайдите в Telegram и найдите своего бота. (не забудьте добавить телеграм апи токен)
 2) Напишите боту команду /start и следуйте инструкциям для регистрации и настройки уведомлений.
 
 Создание привычек
